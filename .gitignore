@@ -1,9 +1,6 @@
 *~
 *.o
-.DS_Store
 *#
 .#*
 *.pyc
-venv
-*.sqlite3*
-celerybeat-schedule*
+.DS_Store
