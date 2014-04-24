@@ -30,8 +30,6 @@ hbase_site_templ = """\
 HBASE_VER = "0.94.8"
 HBASE_NAME = "hbase-" + HBASE_VER
 HBASE_TAR = HBASE_NAME + ".tar.gz"
-#HBASE_URL = "http://mirror.tcpdiag.net/apache/hbase/stable/" + HBASE_TAR
-#HBASE_URL = "http://goodeanalytics.com/downloads/" + HBASE_TAR
 HBASE_URL = "https://s3.amazonaws.com/cladogenesis_downloads/" + HBASE_TAR
 
 class Hbase(clustersetup.ClusterSetup):
