@@ -4,13 +4,6 @@
 *#
 .#*
 *.pyc
-./data
-logs
-metastore_db
-TempStatsStore
 venv
 *.sqlite3*
 celerybeat-schedule*
-zz-junk
-treasury_curves.csv
-^GSPC_benchmark.csv
