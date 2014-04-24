@@ -119,20 +119,6 @@ class Hadoop(clustersetup.ClusterSetup):
     def _setup_hadoop_user(self, node, user):
         node.ssh.execute('gpasswd -a %s hadoop' % user)
 
-
-    '''
-    update-alternatives --install /etc/hadoop-0.20/conf hadoop-0.20-conf /etc/hadoop-0.20/conf.starcluster 50
-
-    root@master:~# sudo update-alternatives --config hadoop-0.20-conf 
-    There are 2 choices for the alternative hadoop-0.20-conf (providing /etc/hadoop-0.20/conf).
-
-  Selection    Path                               Priority   Status
-------------------------------------------------------------
-* 0            /etc/hadoop-0.20/conf.starcluster   50        auto mode
-  1            /etc/hadoop-0.20/conf.empty         10        manual mode
-  2            /etc/hadoop-0.20/conf.starcluster   50        manual mode
-
-  '''
     def _install_empty_conf(self, node):
         node.ssh.execute('cp -r %s %s' % (self.empty_conf, self.hadoop_conf))
         alternatives_cmd = self._get_alternatives_cmd(node)
