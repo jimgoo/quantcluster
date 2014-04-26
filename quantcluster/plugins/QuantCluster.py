@@ -20,12 +20,12 @@ class QuantCluster(clustersetup.ClusterSetup):
         return self._pool
 
     def apt_install(self, nodes):
-        cmd = 'sudo apt-get install %s ' % (self.apt_pkgs.join(' '))
+        cmd = 'sudo apt-get install %s ' % (' '.join(self.apt_pkgs))
         log.info('----> QuantCluster>  %s' cmd)
         node.ssh.execute(cmd)        
 
     def pip_install(self, nodes):
-        cmd = 'sudo pip install --upgrade %s ' % (self.pip_pkgs.join(' '))
+        cmd = 'sudo pip install --upgrade %s ' % (' '.join(self.pip_pkgs))
         log.info('----> QuantCluster>  %s' cmd)
         node.ssh.execute(cmd)
         
