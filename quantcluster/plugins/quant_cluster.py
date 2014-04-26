@@ -1,17 +1,17 @@
 import posixpath
 
-from starcluster import threadpool
 from starcluster import clustersetup
+from starcluster import threadpool
 from starcluster.logger import log
 
+INSTALL_DIR = '/opt'
+
 class QuantCluster(clustersetup.ClusterSetup):
-    """
-    Configures Hadoop using Cloudera packages on StarCluster
-    """
+    
     def __init__(self):
         self._pool = None
-        self.apt_pkgs = ['libpq-dev', 'postgresql' 'postgresql-client']
-        self.pip_pkgs = ['celery[librabbitmq]', 'swigibpy' 'scikit-learn' 'six']
+        self.apt_pkgs = ['libpq-dev', 'postgresql', 'postgresql-client']
+        self.pip_pkgs = ['swigibpy', 'six', 'scikit-learn'] # celery[librabbitmq]
         self.git_pkgs = ['jgoode21/lakehouse', 'jgoode21/zipline']
         
     @property
@@ -22,22 +22,30 @@ class QuantCluster(clustersetup.ClusterSetup):
 
     def apt_install(self, node):
         cmd = 'sudo apt-get install -y %s ' % (' '.join(self.apt_pkgs))
+        log.info('%s> %s' % (node.alias, cmd))
         node.ssh.execute(cmd)        
 
     def pip_install(self, node):
-        cmd = 'sudo pip install --upgrade %s ' % (' '.join(self.pip_pkgs))
+        cmd = 'sudo pip install %s ' % (' '.join(self.pip_pkgs))
+        log.info('%s> %s' % (node.alias, cmd))
         node.ssh.execute(cmd)
 
     def git_install(self, node):
         cmd = ''
-        for pkg in self.git_pkjs:
-            cmd += 'cd /mnt && git clone https://%s.git' % pkg
-            node.ssh.execute(cmd)
+        for pkg in self.git_pkgs:
+            cmd += 'cd %(INSTALL_DIR)s\ngit clone https://github.com/%(PKG)s.git\ncd %(PKG)s\nsudo python setup.py develop \n' % \
+                   {'PKG': pkg, 'INSTALL_DIR': INSTALL_DIR}
+            
+        log.info('%s> %s' % (node.alias, cmd))
+        node.ssh.execute(cmd)
         
     def run(self, nodes, master, user, user_shell, volumes):
         for node in nodes:
             self.pool.simple_job(self.apt_install, (node,), jobid=node.alias)
+        self.pool.wait()
         for node in nodes:
-            self.pool.simple_job(self.pip_install, (node,), jobid=node.alias)            
+            self.pool.simple_job(self.pip_install, (node,), jobid=node.alias)
+        self.pool.wait()
         for node in nodes:
-            self.pool.simple_job(self.git_install, (node,), jobid=node.alias)            
+            self.pool.simple_job(self.git_install, (node,), jobid=node.alias)
+        self.pool.wait()

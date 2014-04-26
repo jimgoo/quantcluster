@@ -90,8 +90,7 @@ class Hadoop(clustersetup.ClusterSetup):
         self.empty_conf = '/etc/hadoop-0.20/conf.empty'
         self.centos_java_home = '/usr/lib/jvm/java'
         self.centos_alt_cmd = 'alternatives'
-        self.ubuntu_javas = ['/usr/lib/jvm/java-6-sun/jre',
-                             '/usr/lib/jvm/java-6-openjdk/jre']
+        self.ubuntu_javas = ['/usr/lib/jvm/default-java/jre']
         self.ubuntu_alt_cmd = 'update-alternatives'
         self._pool = None
 

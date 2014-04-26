@@ -1,51 +1,38 @@
-"""
-QuantCluster's StarCluster config file. Location ~/.starcluster/config.
-"""
-
-##
-## AWS Credentials and Connection Settings
-##
-
-[aws info]
-AWS_ACCESS_KEY_ID = 
-AWS_SECRET_ACCESS_KEY =
-AWS_USER_ID =
-AWS_REGION_NAME = us-east-1a
-# EC2_CERT = 
-# EC2_PRIVATE_KEY =
-
-[key ec2]
-KEY_LOCATION=~/.ssh/ec2.rsa
+####################################
+## StarCluster Configuration File ##
+####################################
 
 [global]
 DEFAULT_TEMPLATE=default
-REFRESH_INTERVAL=10
-WEB_BROWSER=firefox
+# INCLUDE=~/.starcluster/aws, ~/.starcluster/keys, ~/.starcluster/vols
 
-##
-## Defining Cluster Templates
-##
+# Enter your Amazon AWS credentials here.
+[aws info]
+# ie) ABCDEFGHIJKLMNOPQRST
+AWS_ACCESS_KEY_ID=
+# ie) ABCDEFGHIJKLMNOPQRSTabcdefghijk123456789
+AWS_SECRET_ACCESS_KEY=
+# ie) 1234-5678-9101
+AWS_USER_ID=
+# ie) us-east-1a
+AWS_REGION_NAME=
+
+[key qc-key]
+KEY_LOCATION=~/.ssh/qc-key.pem
 
 [cluster default]
-KEYNAME = ec2
-CLUSTER_SIZE = 2
+KEYNAME = qc-key
+CLUSTER_SIZE = 1
 CLUSTER_USER = sgeadmin
 CLUSTER_SHELL = bash 
 NODE_IMAGE_ID = ami-3393a45a
 NODE_INSTANCE_TYPE = m3.xlarge
-PLUGINS = quant_cluster
-#hadoop, hive
-
-[cluster default_lts]
-EXTENDS = default
-NODE_IMAGE_ID = ami-765b3e1f
-
-##
-## Configuring StarCluster Plugins
-##
+PLUGINS = quant_cluster, hadoop
+#, hive, hbase
+#<TODO> Update Java_Home in Hadoop
 
 [plugin quant_cluster]
-SETUP_CLASS = quantcluster.plugins.quant_cluster
+SETUP_CLASS = quantcluster.plugins.quant_cluster.QuantCluster
 
 [plugin hadoop]
 SETUP_CLASS = quantcluster.plugins.hadoop.Hadoop
@@ -56,8 +43,10 @@ SETUP_CLASS = quantcluster.plugins.hive.Hive
 [plugin hbase]
 SETUP_CLASS = quantcluster.plugins.hbase.Hbase
 
-[plugin ipcluster]
-SETUP_CLASS = starcluster.plugins.ipcluster.IPCluster
-ENABLE_NOTEBOOK = True
-NOTEBOOK_PASSWD = ruston235711!
-NOTEBOOK_DIRECTORY = /home/sgeadmin
+# [plugin myplugin]
+# NOTE: myplugin module must either live in ~/.starcluster/plugins or be
+# on your PYTHONPATH
+# SETUP_CLASS = myplugin.SetupClass
+# extra settings are passed as __init__ arguments to your plugin:
+# SOME_PARAM_FOR_MY_PLUGIN = 1
+# SOME_OTHER_PARAM = 2
