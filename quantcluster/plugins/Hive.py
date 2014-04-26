@@ -5,9 +5,6 @@ from starcluster.utils import print_timing
 VER = "0.10.0"
 NAME = "hive-" + VER
 TAR = NAME + ".tar.gz"
-#URL = "http://mirror.cc.columbia.edu/pub/software/apache/hive/stable/" + TAR
-#URL = "http://goodeanalytics.com/downloads/" + TAR
-#URL = "https://dl.dropboxusercontent.com/u/50808913/downloads/" + TAR
 URL = "https://s3.amazonaws.com/cladogenesis_downloads/" + TAR
 
 class Hive(DefaultClusterSetup):
