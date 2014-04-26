@@ -20,19 +20,8 @@ A number of open source tools are utilized:
 If you have Python and pip, you can install the QuantCluster Command Line Interface (CLI) with
 
     pip install git+git://github.com/quantcluster/quantcluster.git
-cd quantcluster/
-python setup.py install
-
-View Project on GitHub
-
-    cd /mnt
-    git clone https://github.com/jgoode21/lakehouse.git 
-    git clone https://github.com/jgoode21/zipline.git
-    cd /mnt/zipline
-    sudo python setup.py develop
-    cd /mnt/lakehouse
-    sudo python setup.py develop
-
+    cd quantcluster/
+    python setup.py install
 
 Check that it is working:
 
