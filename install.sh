@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo pip install StarCluster
+sudo pip install 
 
 # Get the CLI interface
 git clone https://github.com/quantcluster/quantcluster.git
