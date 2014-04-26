@@ -5,7 +5,7 @@ import sys
 from setuptools import setup, find_packages
 
 setup(
-    name='quantcluster',
+    name='quantcluster-cli',
     url='http://www.quantcluster.com',
     version='0.0.1',
     description='A command line interface for QuantClusters.',
