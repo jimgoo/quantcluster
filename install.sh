@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#sudo pip install StarCluster
+sudo pip install StarCluster
 
 QC_HOME=/mnt/quantcluster
 cd $QC_HOME
