@@ -1,0 +1,63 @@
+"""
+QuantCluster's StarCluster config file. Location ~/.starcluster/config.
+"""
+
+##
+## AWS Credentials and Connection Settings
+##
+
+[aws info]
+AWS_ACCESS_KEY_ID = 
+AWS_SECRET_ACCESS_KEY =
+AWS_USER_ID =
+AWS_REGION_NAME = us-east-1a
+# EC2_CERT = 
+# EC2_PRIVATE_KEY =
+
+[key ec2]
+KEY_LOCATION=~/.ssh/ec2.rsa
+
+[global]
+DEFAULT_TEMPLATE=default
+REFRESH_INTERVAL=10
+WEB_BROWSER=firefox
+
+##
+## Defining Cluster Templates
+##
+
+[cluster default]
+KEYNAME = ec2
+CLUSTER_SIZE = 2
+CLUSTER_USER = sgeadmin
+CLUSTER_SHELL = bash 
+NODE_IMAGE_ID = ami-3393a45a
+NODE_INSTANCE_TYPE = m3.xlarge
+PLUGINS = quant_cluster
+#hadoop, hive
+
+[cluster default_lts]
+EXTENDS = default
+NODE_IMAGE_ID = ami-765b3e1f
+
+##
+## Configuring StarCluster Plugins
+##
+
+[plugin quant_cluster]
+SETUP_CLASS = quantcluster.plugins.quant_cluster
+
+[plugin hadoop]
+SETUP_CLASS = quantcluster.plugins.hadoop.Hadoop
+
+[plugin hive]
+SETUP_CLASS = quantcluster.plugins.hive.Hive
+
+[plugin hbase]
+SETUP_CLASS = quantcluster.plugins.hbase.Hbase
+
+[plugin ipcluster]
+SETUP_CLASS = starcluster.plugins.ipcluster.IPCluster
+ENABLE_NOTEBOOK = True
+NOTEBOOK_PASSWD = ruston235711!
+NOTEBOOK_DIRECTORY = /home/sgeadmin
