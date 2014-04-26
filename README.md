@@ -1,5 +1,5 @@
-<p><strong><a href="http://www.quantcluster.com"">QuantCluster</a> Command Line Interface (CLI)</strong></p>
-<p>QuantCluster is an open source cluster-computing toolkit for Amazon’s Elastic Compute Cloud (EC2). It is designed to provide a reproducible environment for quantitative finance research that can be scaled to accommodate large problem sizes.</p>
+<h2><strong><a href="http://www.quantcluster.com"">QuantCluster</a> Command Line Interface (CLI)</strong></p>
+<p>QuantCluster is an open source cluster-computing toolkit for Amazon’s Elastic Compute Cloud (EC2). It is designed to provide a reproducible environment for quantitative finance research that can be scaled to accommodate large problem sizes.</h2>
 <p>A number of open source tools are utilized:</p>
 <ul>
 <li><a target="_blank" href="http://star.mit.edu/cluster/"><strong>StarCluster</strong></a> - Cluster-computing toolkit for Amazon&rsquo;s Elastic Compute Cloud</li>
