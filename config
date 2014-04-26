@@ -4,21 +4,16 @@
 
 [global]
 DEFAULT_TEMPLATE=default
-# INCLUDE=~/.starcluster/aws, ~/.starcluster/keys, ~/.starcluster/vols
 
 # Enter your Amazon AWS credentials here.
 [aws info]
-# ie) ABCDEFGHIJKLMNOPQRST
 AWS_ACCESS_KEY_ID=
-# ie) ABCDEFGHIJKLMNOPQRSTabcdefghijk123456789
 AWS_SECRET_ACCESS_KEY=
-# ie) 1234-5678-9101
 AWS_USER_ID=
-# ie) us-east-1a
 AWS_REGION_NAME=
 
 [key qc-key]
-KEY_LOCATION=~/.ssh/qc-key.pem
+KEY_LOCATION=
 
 [cluster default]
 KEYNAME = qc-key
@@ -42,11 +37,3 @@ SETUP_CLASS = quantcluster.plugins.hive.Hive
 
 [plugin hbase]
 SETUP_CLASS = quantcluster.plugins.hbase.Hbase
-
-# [plugin myplugin]
-# NOTE: myplugin module must either live in ~/.starcluster/plugins or be
-# on your PYTHONPATH
-# SETUP_CLASS = myplugin.SetupClass
-# extra settings are passed as __init__ arguments to your plugin:
-# SOME_PARAM_FOR_MY_PLUGIN = 1
-# SOME_OTHER_PARAM = 2

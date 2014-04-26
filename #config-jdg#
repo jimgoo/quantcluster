@@ -1,0 +1,48 @@
+####################################
+## StarCluster Configuration File ##
+####################################
+
+[global]
+DEFAULT_TEMPLATE=default
+# INCLUDE=~/.starcluster/aws, ~/.starcluster/keys, ~/.starcluster/vols
+
+[aws info]
+AWS_ACCESS_KEY_ID=AKIAJQMWIKGM3H52HQPA
+AWS_SECRET_ACCESS_KEY=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
+AWS_USER_ID=1583-3120-8712
+AWS_REGION_NAME=us-east-1a
+
+[key qc-key]
+KEY_LOCATION=~/.ssh/qc-key.pem
+
+[cluster default]
+KEYNAME = qc-key
+CLUSTER_SIZE = 1
+CLUSTER_USER = sgeadmin
+CLUSTER_SHELL = bash 
+NODE_IMAGE_ID = ami-3393a45a
+NODE_INSTANCE_TYPE = m3.xlarge
+PLUGINS = quant_cluster
+# hadoop, hive, quant_cluster
+#<TODO> Update Java_Home in Hadoop
+
+
+[plugin quant_cluster]
+SETUP_CLASS = quantcluster.plugins.quant_cluster.QuantCluster
+
+[plugin hadoop]
+SETUP_CLASS = quantcluster.plugins.hadoop.Hadoop
+
+[plugin hive]
+SETUP_CLASS = quantcluster.plugins.hive.Hive
+
+[plugin hbase]
+SETUP_CLASS = quantcluster.plugins.hbase.Hbase
+
+# [plugin myplugin]
+# NOTE: myplugin module must either live in ~/.starcluster/plugins or be
+# on your PYTHONPATH
+# SETUP_CLASS = myplugin.SetupClass
+# extra settings are passed as __init__ arguments to your plugin:
+# SOME_PARAM_FOR_MY_PLUGIN = 1
+# SOME_OTHER_PARAM = 2
