@@ -4,8 +4,11 @@
 
 QC_HOME=/mnt/quantcluster
 cd $QC_HOME
-# git clone https://github.com/quantcluster/quantcluster.git
-# python setup.py develop
+cd ..
+git clone https://github.com/quantcluster/quantcluster.git
+cd $QC_HOME
+python setup.py develop
+
 starcluster listpublic
 rm -rf ~/.starcluster/config
 rm -rf ~/.starcluster/plugins
