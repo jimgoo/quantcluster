@@ -25,7 +25,7 @@ class QuantCluster(clustersetup.ClusterSetup):
         node.ssh.execute(cmd)        
 
     def pip_install(self, nodes):
-        cmd = 'sudo pip install -U %s ' % (self.pip_pkgs.join(' '))
+        cmd = 'sudo pip install --upgrade %s ' % (self.pip_pkgs.join(' '))
         log.info('----> QuantCluster>  %s' cmd)
         node.ssh.execute(cmd)
         
