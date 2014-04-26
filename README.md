@@ -16,6 +16,7 @@
 <li><strong><a href="http://hive.apache.org/">Hive</a> </strong>- Data warehouse querying and managing large datasets residing in distributed storage</li>
 </ul>
 <p>If you have Python and pip, you can install the QuantCluster Command Line Interface (CLI) with</p>
+
 ```python
 pip install git+git://github.com/quantcluster/quantcluster.git
 ```
