@@ -1,4 +1,3 @@
-
 QuantCluster Command Line Interface (CLI)
 
 QuantCluster is an open source cluster-computing toolkit for Amazon’s Elastic Compute Cloud (EC2). It is designed to provide a reproducible enviroment for quantitiative finance research that can be scaled to accomodate large problem sizes.
@@ -20,21 +19,23 @@ A number of open source tools are utilized:
 
 If you have Python and pip, you can install the QuantCluster Command Line Interface (CLI) with
 
-pip install git+git://github.com/quantcluster/quantcluster.git
+    pip install git+git://github.com/quantcluster/quantcluster.git
 cd quantcluster/
 python setup.py install
 
 View Project on GitHub
 
-        cd /mnt
-        git clone https://github.com/jgoode21/lakehouse.git 
-        git clone https://github.com/jgoode21/zipline.git
-        cd /mnt/zipline
-        sudo python setup.py develop
-        cd /mnt/lakehouse
-        sudo python setup.py develop
+    cd /mnt
+    git clone https://github.com/jgoode21/lakehouse.git 
+    git clone https://github.com/jgoode21/zipline.git
+    cd /mnt/zipline
+    sudo python setup.py develop
+    cd /mnt/lakehouse
+    sudo python setup.py develop
 
 
-        quantcluster listpublic
+Check that it is working:
+
+    quantcluster listpublic
 
 
