@@ -20,8 +20,7 @@
 </ul>
 <p>If you have Python and pip, you can install the QuantCluster Command Line Interface (CLI) with:</p>
 <pre class="lang-py prettyprint prettyprinted">
-<code> 
-pip install git+git://github.com/quantcluster/quantcluster.git
+<code> pip install git+git://github.com/quantcluster/quantcluster.git
 cd quantcluster/<br />python setup.py install<br />
 </code></pre>
 <p>Check that everything is working by listing all Amazon EC2 public images that can be spun up as a cluster</p>
