@@ -35,7 +35,13 @@ nosetests.xml
 .project
 .pydevproject
 
+# Emacs and Mac cruft
 *~
-*.DS_Store
+*#
+.#*
+.DS_Store
+
+# <TODO>
 zipline-data
 config-jdg
+
