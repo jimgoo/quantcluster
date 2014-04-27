@@ -3,9 +3,6 @@
 import sys
 from setuptools import setup, find_packages
 
-import os
-os.system('sh install.sh')
-
 setup(
     name='quantcluster',
     url='http://www.quantcluster.com',
@@ -14,5 +11,5 @@ setup(
     author='Jimmie Goode',
     author_email='jimmie@quantcluster.com',
     packages=find_packages(),
-    install_requires=['StarCluster'],
+    install_requires=[], #'StarCluster'
     )
