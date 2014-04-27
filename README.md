@@ -1,7 +1,12 @@
-<h2>QuantCluster</h2>
+<h1><a href="http://www.quantcluster.com">QuantCluster</a></h1>
 
-<h3><a href="http://www.quantcluster.com">quantcluster.com</a></h3>
-<pre class="lang-py prettyprint prettyprinted">
-<code></code></pre>
-<p>Check that everything is working by listing all Amazon EC2 public images that can be spun up as a cluster</p>
-<pre class="lang-py prettyprint prettyprinted"><code>quantcluster listpublic</code></pre>
+<h3><a href="http://www.quantcluster.com">www.quantcluster.com</a></h3>
+
+<h3>Install with pip</h3>
+<pre><code>pip install quantcluster</code></pre>
+
+<h3>Install from GitHub</h3>
+<pre><code>git clone https://github.com/quantcluster/quantcluster.git
+cd quantcluster
+python setup.py install</code></pre>
+
