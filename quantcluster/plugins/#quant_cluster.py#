@@ -28,7 +28,8 @@ class QuantCluster(clustersetup.ClusterSetup):
         cmd = 'sudo pip install %s ' % (' '.join(self.pip_pkgs))
         log.info('%s> %s' % (node.alias, cmd))
         node.ssh.execute(cmd)
-        
+
+    # <TODO> Add these to PIP
     def git_install(self, node):
         cmd = ''
         for pkg in self.git_pkgs:
