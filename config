@@ -1,0 +1,40 @@
+####################################
+## QuantCluster Configuration File ##
+####################################
+
+
+[global]
+DEFAULT_TEMPLATE=default
+
+# Enter your Amazon AWS credentials here.
+[aws info]
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_USER_ID=
+AWS_REGION_NAME=
+
+[key qc-key]
+KEY_LOCATION=
+
+[cluster default]
+KEYNAME = qc-key
+CLUSTER_SIZE = 1
+CLUSTER_USER = sgeadmin
+CLUSTER_SHELL = bash 
+NODE_IMAGE_ID = ami-3393a45a
+NODE_INSTANCE_TYPE = m3.xlarge
+PLUGINS = quant_cluster, hadoop
+#, hive, hbase
+#<TODO> Update Java_Home in Hadoop
+
+[plugin quant_cluster]
+SETUP_CLASS = quantcluster.plugins.quant_cluster.QuantCluster
+
+[plugin hadoop]
+SETUP_CLASS = quantcluster.plugins.hadoop.Hadoop
+
+[plugin hive]
+SETUP_CLASS = quantcluster.plugins.hive.Hive
+
+[plugin hbase]
+SETUP_CLASS = quantcluster.plugins.hbase.Hbase
