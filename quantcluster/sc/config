@@ -25,13 +25,13 @@ NODE_INSTANCE_TYPE = m3.xlarge
 PLUGINS = quant_cluster, hadoop, hive, hbase
 
 [plugin quant_cluster]
-SETUP_CLASS = quantcluster.plugins.quant_cluster.QuantCluster
+SETUP_CLASS = quantcluster.sc.plugins.quant_cluster.QuantCluster
 
 [plugin hadoop]
-SETUP_CLASS = quantcluster.plugins.hadoop.Hadoop
+SETUP_CLASS = quantcluster.sc.plugins.hadoop.Hadoop
 
 [plugin hive]
-SETUP_CLASS = quantcluster.plugins.hive.Hive
+SETUP_CLASS = quantcluster.sc.plugins.hive.Hive
 
 [plugin hbase]
-SETUP_CLASS = quantcluster.plugins.hbase.Hbase
+SETUP_CLASS = quantcluster.sc.plugins.hbase.Hbase
