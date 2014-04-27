@@ -2,7 +2,6 @@
 ## QuantCluster Configuration File ##
 ####################################
 
-
 [global]
 DEFAULT_TEMPLATE=default
 
@@ -23,9 +22,7 @@ CLUSTER_USER = sgeadmin
 CLUSTER_SHELL = bash 
 NODE_IMAGE_ID = ami-3393a45a
 NODE_INSTANCE_TYPE = m3.xlarge
-PLUGINS = quant_cluster, hadoop
-#, hive, hbase
-#<TODO> Update Java_Home in Hadoop
+PLUGINS = quant_cluster, hadoop, hive, hbase
 
 [plugin quant_cluster]
 SETUP_CLASS = quantcluster.plugins.quant_cluster.QuantCluster

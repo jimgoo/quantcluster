@@ -45,3 +45,4 @@ nosetests.xml
 zipline-data
 config-jdg
 
+*gitpushj.sh
