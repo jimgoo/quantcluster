@@ -269,7 +269,7 @@ class Hadoop(clustersetup.ClusterSetup):
         self.pool.wait()
 
     def _open_ports(self, master):
-        ports = [50070, 50030]
+        ports = [50070, 50030, 50060]
         ec2 = master.ec2
         for group in master.cluster_groups:
             for port in ports:

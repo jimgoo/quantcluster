@@ -34,11 +34,14 @@ HBASE_URL = "https://s3.amazonaws.com/cladogenesis_downloads/" + HBASE_TAR
 
 class Hbase(clustersetup.ClusterSetup):
 
-    def __init__(self):
+    def __init__(self,
+                 hadoop_home='/usr/lib/hadoop-0.20/',
+                 hadoop_core='/usr/lib/hadoop-0.20/hadoop-core-0.20.2-cdh3u5.jar'):
+        self.hadoop_home = hadoop_home
+        self.hadoop_core = hadoop_core
         self.hbase_conf = '/opt/hbase/conf'
         self.centos_java_home = '/usr/lib/jvm/java'
-        self.ubuntu_javas = ['/usr/lib/jvm/java-6-sun/jre',
-                             '/usr/lib/jvm/java-6-openjdk/jre']
+        self.ubuntu_javas = ['/usr/lib/jvm/default-java/jre']
         self._pool = None
 
     @property
@@ -56,7 +59,6 @@ class Hbase(clustersetup.ClusterSetup):
                 return java
         raise Exception("Cant find JAVA jre")
 
-
     def _has_tar(self, node):
         if node.ssh.isfile("/opt/" + HBASE_TAR):
             return True
@@ -64,19 +66,15 @@ class Hbase(clustersetup.ClusterSetup):
             return False
     
     def _download(self, node):
-
         if self._has_tar(node):
             log.info("TAR file already present, skipping download")
             return
-        
-        cmd = "cd /opt && curl -O " + HBASE_URL
-               
+        cmd = "cd /opt && curl -O " + HBASE_URL               
         log.info("Downloading tar on  " + node.alias + " with: " + HBASE_URL)
         node.ssh.execute(cmd)
         log.info("Downloaded tarball OK.")
 
     def _extract(self, master, node):
-
         # remove old symlinked install 
         if node.ssh.isdir('/opt/hbase'):
             node.ssh.execute("rm -rf /opt/hbase")
@@ -148,18 +146,20 @@ class Hbase(clustersetup.ClusterSetup):
 
     def _start_all(self, master, nodes):
        
-        # Copy production hadoop jar into the hbase/lib/ directory
+        # Copy hadoop-core jar into the hbase/lib/ directory
         for node in nodes:
-            node.ssh.execute("rm -f /opt/hbase/lib/hadoop-core-*.jar && " +
-                             "cp /opt/hadoop/hadoop-core-*.jar /opt/hbase/lib/")
-        
-        # Raise limits on the number of open files
-        # Raise limits on the number of user processes
+            node.ssh.execute("cp %s /opt/hbase/lib/" % self.hadoop_core)
+            
+            # node.ssh.execute("rm -f /opt/hbase/lib/hadoop-core-*.jar && " +
+            #                  "cp /opt/hadoop/hadoop-core-*.jar /opt/hbase/lib/")
         
         # Permanently add 'localhost' to the list of known hosts.
         master.ssh.execute("ssh-keyscan localhost 2>&1 | sort -u - ~/.ssh/known_hosts > ~/.ssh/tmp_hosts")
         master.ssh.execute("cat ~/.ssh/tmp_hosts >> ~/.ssh/known_hosts")
+
         
+        # Raise limits on the number of open files
+        # Raise limits on the number of user processes
         master.ssh.execute("ulimit -n 50000 && " +
                            "ulimit -u 500000 && " +
                            "cd /opt/hbase && " +
@@ -184,18 +184,8 @@ class Hbase(clustersetup.ClusterSetup):
         log.info("HBase Monitor:                 http://%s:60010" % master.dns_name)
         log.info("HBase RegionServer at master:  http://%s:60030" % master.dns_name)
 '''
-Test in hbase shell (bin/hbase shell):
-
+hbase>>
 create 'test', 'cf'
 put 'test', 'row1', 'cf:a', 'value1'
 scan 'test'
-'''
-
-'''
-root@master:/opt/hbase# bin/start-hbase.sh 
-localhost: starting zookeeper, logging to /opt/hbase/bin/../logs/hbase-root-zookeeper-master.out
-starting master, logging to /opt/hbase/bin/../logs/hbase-root-master-master.out
-master: starting regionserver, logging to /opt/hbase/bin/../logs/hbase-root-regionserver-master.out
-node001: starting regionserver, logging to /opt/hbase/bin/../logs/hbase-root-regionserver-node001.out
-node002: starting regionserver, logging to /opt/hbase/bin/../logs/hbase-root-regionserver-node002.out
 '''
