@@ -90,8 +90,8 @@ class Hadoop(clustersetup.ClusterSetup):
         self.empty_conf = '/etc/hadoop-0.20/conf.empty'
         self.centos_java_home = '/usr/lib/jvm/java'
         self.centos_alt_cmd = 'alternatives'
-        self.ubuntu_javas = ['/usr/lib/jvm/default-java/jre']
         self.ubuntu_alt_cmd = 'update-alternatives'
+        self.ubuntu_javas = ['/usr/lib/jvm/default-java/jre']
         self._pool = None
 
     @property
@@ -104,9 +104,10 @@ class Hadoop(clustersetup.ClusterSetup):
         # check for CentOS, otherwise default to Ubuntu 10.04's JAVA_HOME
         if node.ssh.isfile('/etc/redhat-release'):
             return self.centos_java_home
-        for java in self.ubuntu_javas:
-            if node.ssh.isdir(java):
-                return java
+        else:
+            for java in self.ubuntu_javas:
+                if node.ssh.isdir(java):
+                    return java
         raise Exception("Cant find JAVA jre")
 
     def _get_alternatives_cmd(self, node):

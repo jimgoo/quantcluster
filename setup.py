@@ -1,6 +1,6 @@
-#!/usr/bin/env python
 
 import sys
+
 from setuptools import setup, find_packages
 
 setup(
@@ -11,5 +11,5 @@ setup(
     author='Jimmie Goode',
     author_email='jimmie@quantcluster.com',
     packages=find_packages(),
-    install_requires=[], #'StarCluster'
+    install_requires=['StarCluster'],
     )

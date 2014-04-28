@@ -4,6 +4,7 @@
 
 [global]
 DEFAULT_TEMPLATE=default
+REFRESH_INTERVAL=5
 
 # Enter your Amazon AWS credentials here.
 [aws info]
@@ -25,13 +26,21 @@ NODE_INSTANCE_TYPE = m3.xlarge
 PLUGINS = quant_cluster, hadoop, hive, hbase
 
 [plugin quant_cluster]
-SETUP_CLASS = quantcluster.sc.plugins.quant_cluster.QuantCluster
+SETUP_CLASS = quantcluster.plugins.quant_cluster.QuantCluster
+GIT_PKGS = jgoode21/zipline, quantcluster/pulley
 
 [plugin hadoop]
-SETUP_CLASS = quantcluster.sc.plugins.hadoop.Hadoop
+SETUP_CLASS = quantcluster.plugins.hadoop.Hadoop
 
 [plugin hive]
-SETUP_CLASS = quantcluster.sc.plugins.hive.Hive
+SETUP_CLASS = quantcluster.plugins.hive.Hive
 
 [plugin hbase]
-SETUP_CLASS = quantcluster.sc.plugins.hbase.Hbase
+SETUP_CLASS = quantcluster.plugins.hbase.Hbase
+
+[plugin ipcluster]
+SETUP_CLASS = starcluster.plugins.ipcluster.IPCluster
+ENABLE_NOTEBOOK = True
+NOTEBOOK_DIRECTORY = /home/ubuntu
+NOTEBOOK_PASSWD = ruston235711!
+#/home/sgeadmin

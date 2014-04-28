@@ -1,3 +1,5 @@
+import posixpath
+
 from starcluster.clustersetup import DefaultClusterSetup
 from starcluster.logger import log
 from starcluster.utils import print_timing
@@ -46,18 +48,23 @@ class Hive(DefaultClusterSetup):
                          "ln -s " + NAME + " hive")
 
 
+    def _add_path(self, node):
+        env_file = node.ssh.remote_file('/etc/profile', 'a')
+        env_file.write('export PATH=$PATH:/opt/hive/bin \n')
+        env_file.close()
+        
     def run(self, nodes, master, user, user_shell, volumes):
 
         log.info("Installing files...")
         self._download(master)
         self._extract(master)
+        self._add_path(master)
         
         log.info("Configuring HDFS directories for Hive...")
-        master.ssh.execute("cd /opt/hadoop && " +
-                           "bin/hadoop fs -mkdir /tmp && " +
-                           "bin/hadoop fs -mkdir /user/hive/warehouse && " +
-                           "bin/hadoop fs -chmod g+w /tmp && " + 
-                           "bin/hadoop fs -chmod g+w /user/hive/warehouse")
+        master.ssh.execute("hadoop fs -mkdir /tmp && " +
+                           "hadoop fs -mkdir /user/hive/warehouse && " +
+                           "hadoop fs -chmod g+w /tmp && " + 
+                           "hadoop fs -chmod g+w /user/hive/warehouse")
 
         # <TODO> To use bin/hive, you need to set this:
         # export HADOOP_HOME=/opt/hadoop
