@@ -2,32 +2,47 @@
 ## QuantCluster Configuration File ##
 ####################################
 
-[global]
-DEFAULT_TEMPLATE=default
-REFRESH_INTERVAL=5
-
 # Enter your Amazon AWS credentials here.
 [aws info]
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
 AWS_USER_ID=
-AWS_REGION_NAME=
+AWS_REGION_NAME=us-east-1
 
 [key qc-key]
-KEY_LOCATION=
+KEY_LOCATION=~/.ssh/mykey.pem
 
+[global]
+DEFAULT_TEMPLATE=default
+REFRESH_INTERVAL=5
+
+# Customized ami-6b211202 us-east-1 starcluster-base-ubuntu-13.04-x86_64-hvm (HVM-EBS)
 [cluster default]
 KEYNAME = qc-key
 CLUSTER_SIZE = 1
 CLUSTER_USER = sgeadmin
 CLUSTER_SHELL = bash 
-NODE_IMAGE_ID = ami-3393a45a
+NODE_IMAGE_ID = ami-f0856498
 NODE_INSTANCE_TYPE = m3.xlarge
-PLUGINS = quant_cluster, hadoop, hive, hbase
 
-[plugin quant_cluster]
+# Standard ami-6b211202 us-east-1 starcluster-base-ubuntu-13.04-x86_64-hvm (HVM-EBS)
+[cluster imagehost]
+KEYNAME = qc-key
+CLUSTER_SIZE = 1
+CLUSTER_USER = sgeadmin
+CLUSTER_SHELL = bash 
+NODE_IMAGE_ID = ami-6b211202
+NODE_INSTANCE_TYPE = m3.xlarge
+PLUGINS = qc, ipcluster, hadoop, hive, hbase
+
+# plugin for installing packages via apt-get, pip, and git
+[plugin qc]
 SETUP_CLASS = quantcluster.plugins.quant_cluster.QuantCluster
-GIT_PKGS = jgoode21/zipline, quantcluster/pulley
+APT_PKGS = libpq-dev, postgresql, postgresql-client
+PIP_PKGS = six, simplejson, ipython[all], south, django_extensions
+GIT_PKGS = quantcluster/zipline, quantcluster/pulley
+INSTALL_DIR = /opt
+INSTALL_TWS = False
 
 [plugin hadoop]
 SETUP_CLASS = quantcluster.plugins.hadoop.Hadoop
@@ -41,6 +56,11 @@ SETUP_CLASS = quantcluster.plugins.hbase.Hbase
 [plugin ipcluster]
 SETUP_CLASS = starcluster.plugins.ipcluster.IPCluster
 ENABLE_NOTEBOOK = True
-NOTEBOOK_DIRECTORY = /home/ubuntu
-NOTEBOOK_PASSWD = ruston235711!
-#/home/sgeadmin
+NOTEBOOK_DIRECTORY = /home/sgeadmin/notebooks
+NOTEBOOK_PASSWD = 
+
+[plugin ipcluster_stop]
+SETUP_CLASS = starcluster.plugins.ipcluster.IPClusterStop
+
+[plugin ipcluster_restart]
+SETUP_CLASS = starcluster.plugins.ipcluster.IPClusterRestartEngines
