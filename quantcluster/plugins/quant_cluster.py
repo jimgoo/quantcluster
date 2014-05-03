@@ -7,7 +7,7 @@ from starcluster.logger import log
 # command for install git packages
 git_cmd = """
 mkdir %(PKG_DIR)s
-cd %(PKG_DIR)s
+cd %(HOME)s
 git clone https://github.com/%(USER)s/%(PKG)s.git
 cd %(PKG)s
 sudo python setup.py develop

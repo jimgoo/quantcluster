@@ -39,10 +39,12 @@ PLUGINS = qc, ipcluster, hadoop, hive, hbase
 [plugin qc]
 SETUP_CLASS = quantcluster.plugins.quant_cluster.QuantCluster
 APT_PKGS = libpq-dev, postgresql, postgresql-client
-PIP_PKGS = six, simplejson, ipython[all], south, django_extensions
+# ipython[all]
+PIP_PKGS = six, simplejson, south, django_extensions
 GIT_PKGS = quantcluster/zipline, quantcluster/pulley
 INSTALL_DIR = /opt
 INSTALL_TWS = False
+
 
 [plugin hadoop]
 SETUP_CLASS = quantcluster.plugins.hadoop.Hadoop
