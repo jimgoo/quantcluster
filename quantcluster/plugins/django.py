@@ -53,9 +53,6 @@ class Homepage(clustersetup.ClusterSetup):
         
     def run(self, nodes, master, user, user_shell, volumes):
         pass
-        # for node in nodes:
-        #     self.pool.simple_job(self.apt_install, (node,), jobid=node.alias)
-        # self.pool.wait()
 
         
 

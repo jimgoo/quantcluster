@@ -1,7 +1,4 @@
-
-# BASE_AMI_ID = ami-3393a45a
-# INSTANCE_TYPE = m3.xlarge
-# starcluster start -o -s 1 -i $INSTANCE_TYPE -n $BASE_AMI_ID imagehost
+#!/bin/bash
 
 starcluster start -o -s 1 -i m3.xlarge -n ami-3393a45a imagehost
 starcluster listclusters --show-ssh-status imagehost

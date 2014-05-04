@@ -35,7 +35,7 @@ NODE_IMAGE_ID = ami-6b211202
 NODE_INSTANCE_TYPE = m3.xlarge
 PLUGINS = qc, ipcluster, hadoop, hive, hbase
 
-# plugin for installing packages via apt-get, pip, and git
+# Plugin for installing packages via apt-get, pip, and git
 [plugin qc]
 SETUP_CLASS = quantcluster.plugins.quant_cluster.QuantCluster
 APT_PKGS = libpq-dev, postgresql, postgresql-client
