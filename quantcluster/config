@@ -45,7 +45,6 @@ GIT_PKGS = quantcluster/zipline, quantcluster/pulley
 INSTALL_DIR = /opt
 INSTALL_TWS = False
 
-
 [plugin hadoop]
 SETUP_CLASS = quantcluster.plugins.hadoop.Hadoop
 
