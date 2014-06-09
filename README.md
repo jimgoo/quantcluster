@@ -6,6 +6,6 @@ QuantCluster is a set of plugins for MIT's <a href="http://star.mit.edu/cluster/
 <h3>Install with pip</h3>
 <pre><code>pip install quantcluster</code></pre>
 
-More info at <em><a href="http://goodeanalytics.com/clusters/ec2-clusters/">GoodeAnalytics.com</a></em>
+More info at <a href="http://goodeanalytics.com/clusters/ec2-clusters/">GoodeAnalytics.com</a>.
 
-Docs at <a href="http://star.mit.edu/cluster/docs/latest/">StarCluster site</a>
+Documentation at <a href="http://star.mit.edu/cluster/docs/latest/">StarCluster site</a>.
