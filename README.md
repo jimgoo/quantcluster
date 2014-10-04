@@ -23,6 +23,6 @@
 <h3>Install with pip</h3>
 <pre><code>pip install quantcluster</code></pre>
 
-More info at <a href="http://goodeanalytics.com/clusters/ec2-clusters/">GoodeAnalytics.com</a>.
+More info at <a href="http://goodeanalytics.com/clusters/ec2-clusters/">GoodeAnalytics.com</a>. Old versions are on <a href="https://pypi.python.org/pypi/quantcluster">the Python Package Index page</a>.
 
 Documentation at <a href="http://star.mit.edu/cluster/docs/latest/">StarCluster site</a>.
