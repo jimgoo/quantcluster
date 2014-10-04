@@ -3,8 +3,8 @@
 <p><span color="#000000"><span><span>Arbitrarily large clusters can be created and are pre-configured with the following:</span></span></span></p>
 <ul>
 <li><a href="http://hadoop.apache.org/">Apache Hadoop</a> - Framework for writing massively distributed map/reduce tasks.</li>
-<li><a href="http://hadoop.apache.org/">Apache Hive</a> - Data warehouse querying and managing large datasets residing in distributed storage.</li>
-<li><a href="http://hadoop.apache.org/">Apache HBase</a> - Random, realtime read/write access to big financial data.</li>
+<li><a href="http://hive.apache.org/">Apache Hive</a> - Data warehouse querying and managing large datasets residing in distributed storage.</li>
+<li><a href="http://hbase.apache.org/">Apache HBase</a> - Random, realtime read/write access to big financial data.</li>
 <li><a href="https://github.com/quantopian/zipline">Zipline</a><span>&nbsp;- Algorithmic trading library.</span></li>
 <li><a href="https://github.com/Komnomnomnom/swigibpy">swigibpy</a><span>&nbsp;- Third party Interactive Brokers Python API generated from TWS C++ API using SWIG.</span></li>
 <li><a href="/clusters/pulley-library/">Pulley</a><span>&nbsp;- Library for automated trading execution linking above two.</span></li>
