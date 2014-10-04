@@ -1,6 +1,6 @@
 <h1>QuantCluster</h1>
 <p><span>QuantCluster is a set of plugins for MIT's&nbsp;</span><a href="http://star.mit.edu/cluster/">StarCluster</a><span>&nbsp;that have useful for scalable quantitative finance research with Amazon&rsquo;s Elastic Compute Cloud (EC2).&nbsp; It provides reproducible parallel computing environments that can be scaled up to accommodate </span><span>large problem sizes.</span></p>
-<p><span color="#000000"><span><span>Arbitrarily large clusters can be created and configured with the following:</span></span></span></p>
+<p><span color="#000000"><span><span>Arbitrarily large clusters can be created and are pre-configured with the following:</span></span></span></p>
 <ul>
 <li><a href="https://github.com/quantopian/zipline">Zipline</a><span>&nbsp;- Algorithmic trading library.</span></li>
 <li><a href="https://github.com/Komnomnomnom/swigibpy">swigibpy</a><span>&nbsp;- Third party Interactive Brokers Python API generated from TWS C++ API using SWIG.</span></li>
