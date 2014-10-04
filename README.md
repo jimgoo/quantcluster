@@ -23,6 +23,6 @@
 <h3>Install with pip</h3>
 <pre><code>pip install quantcluster</code></pre>
 
-Older versions are on <a href="https://pypi.python.org/pypi/quantcluster">the Python Package Index page</a>. Documentation can be found at <a href="http://star.mit.edu/cluster/docs/latest/">StarCluster site</a>.
+Older versions are on the <a href="https://pypi.python.org/pypi/quantcluster">Python Package Index page</a>. Documentation can be found at <a href="http://star.mit.edu/cluster/docs/latest/">StarCluster site</a>.
 
 
