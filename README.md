@@ -7,7 +7,6 @@
 <li><a href="http://hbase.apache.org/">Apache HBase</a> - Random, realtime read/write access to big financial data.</li>
 <li><a href="https://github.com/quantopian/zipline">Zipline</a><span>&nbsp;- Algorithmic trading library.</span></li>
 <li><a href="https://github.com/Komnomnomnom/swigibpy">swigibpy</a><span>&nbsp;- Third party Interactive Brokers Python API generated from TWS C++ API using SWIG.</span></li>
-<li><a href="/clusters/pulley-library/">Pulley</a><span>&nbsp;- Library for automated trading execution linking above two.</span></li>
 <li><a href="http://ipython.org/">IPython</a> - An advanced interactive shell for Python with notebooks.</li>
 <li><a href="http://www.numpy.org/">NumPy</a> - Fast array and numerical library for Python (compiled against OpenBLAS).</li>
 <li><a href="http://www.scipy.org/">SciPy</a> - Scientific algorithms library for Python (compiled against OpenBLAS).</li>
