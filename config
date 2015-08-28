@@ -1,6 +1,8 @@
-####################################
+######################################
 ## QuantCluster Configuration File
-####################################
+## Same format as StarCluster config,
+## just adds new features.
+######################################
 
 # Enter your Amazon AWS credentials here.
 [aws info]
