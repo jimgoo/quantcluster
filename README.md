@@ -1,7 +1,7 @@
 <h1>QuantCluster</h1>
 <p><span>QuantCluster is a set of plugins for MIT's&nbsp;</span><a href="http://star.mit.edu/cluster/">StarCluster</a><span>&nbsp; useful for scalable quantitative finance research with Amazon&rsquo;s Elastic Compute Cloud (EC2).&nbsp; It provides reproducible parallel computing environments that can be scaled up to accommodate </span><span>large data sets.</p>
 
-The `quant_cluster` plugin itself allows the user to specify software to install via `apt-get`, `pip`, and `git` on every node of the cluster. The other plugins are for configuring Hadoop, Hive, and HBase on a StarCluster.
+The `quant_cluster` plugin itself allows the user to specify software to install via `apt-get`, `pip`, and `pip+git` on every node of the cluster. The other plugins are for configuring Hadoop, Hive, and HBase on a StarCluster.
 
 The following packages are added to the base StarCluster images with `make_image.sh`:
 <ul>
